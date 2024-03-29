@@ -1,0 +1,30 @@
+* { 
+  all: initial;
+  font-family: JetBrainsMono Nerd Font, sans-serif;
+  font-size: 14px;
+}
+
+tooltip {
+  background-color: #111111;
+}
+
+window#waybar {
+  background: linear-gradient(to bottom, rgba(17, 17, 17, 0.7), transparent);
+}
+
+#clock {
+  border-radius: 10px;
+  font-weight: bold;
+  color: white;
+  margin-right: 10px;
+}
+
+#workspaces {
+  padding: 0px 15px;
+  border-radius: 15px;
+  background-color: rgba(219, 225, 227, 0.5);
+}
+
+#memory {
+  margin-left: 10px;
+}

@@ -1,0 +1,55 @@
+{
+  "height": 25,
+  "layer": "top",
+  "spacing": 15,
+
+  "modules-right": [
+    "network",
+    "wireplumber",
+    "battery",
+    "clock"
+  ],
+
+  "modules-center": [
+    "hyprland/workspaces"
+  ],
+
+  "modules-left": [
+    "memory",
+    "temperature"
+  ],
+
+  "clock": {
+    "format": "{:%b %d - %H:%M}"
+  },
+
+  "battery": {
+    "format": "{capacity}% {icon}",
+    "format-icons": ["󰁺", "󰁼", "󰁾", "󰂀", "󰁹"],
+    "format-charging": "{capacity}% 󰂄",
+    "interval": 10
+  },
+
+  "wireplumber": {
+    "format": "{volume}%  "
+  },
+
+  "hyprland/workspaces": {
+    "active-only": true
+  },
+
+  "network": {
+    "format-wifi": "{essid}   {bandwidthTotalBits}",
+    "format-disconnected": "No Network",
+    "interval": 20
+  },
+
+  "memory": {
+    "format": "Ram Usage: {percentage}%",
+    "tooltip-format": "{used} GiB / {total} Gib"
+  },
+
+  "temperature": {
+    "format": "Cpu Temp: {temperatureC}°C"
+  }
+}
