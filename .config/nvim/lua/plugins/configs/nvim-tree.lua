@@ -8,6 +8,7 @@ require("nvim-tree").setup({
 		dotfiles = false,
 		git_ignored = false,
 	},
+	renderer = { icons = { glyphs = { git = { untracked = "+" } } } },
 })
 
 vim.keymap.set("n", "<leader>e", "<cmd>NvimTreeFocus<CR>", { desc = "Focus Tree View" })
