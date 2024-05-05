@@ -14,11 +14,11 @@ vim.opt.rtp:prepend(lazypath)
 local plugins = {
 	-- Theme
 	{
-		"ellisonleao/gruvbox.nvim",
+		"catppuccin/nvim",
 		priority = 1000,
 		config = function()
 			vim.o.background = "dark"
-			vim.cmd([[colorscheme gruvbox]])
+			vim.cmd([[colorscheme catppuccin-mocha]])
 		end,
 	},
 	-- Mason & LSP
