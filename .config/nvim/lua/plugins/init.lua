@@ -28,6 +28,7 @@ local plugins = {
 			"neovim/nvim-lspconfig",
 			"williamboman/mason-lspconfig.nvim",
 			"stevearc/conform.nvim",
+			"WhoIsSethDaniel/mason-tool-installer.nvim",
 		},
 		init = function()
 			require("plugins.configs.lsp")

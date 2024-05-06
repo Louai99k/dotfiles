@@ -1,5 +1,12 @@
 require("mason").setup()
 require("mason-lspconfig").setup()
+require("mason-tool-installer").setup({
+	ensure_installed = {
+		"lua-language-server",
+		"stylua",
+		"prettier",
+	},
+})
 require("conform").setup({
 	formatters_by_ft = {
 		lua = { "stylua" },
