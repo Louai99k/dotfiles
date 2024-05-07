@@ -39,9 +39,7 @@ local plugins = {
 		"folke/which-key.nvim",
 		event = "VeryLazy",
 		init = function()
-			require("which-key").setup()
-			vim.o.timeout = true
-			vim.o.timeoutlen = 300
+			require("plugins.configs.which-key")
 		end,
 		opt = {},
 	},
