@@ -1,6 +1,7 @@
 local conform = require("conform")
 local lspconfig = require("lspconfig")
 local lua_capabilities = require("cmp_nvim_lsp").default_capabilities()
+local telescope_builtin = require("telescope.builtin")
 
 -- Set Up
 require("mason").setup()
@@ -35,11 +36,11 @@ lspconfig.lua_ls.setup({
 
 -- Key Bindings
 vim.keymap.set({ "v", "n" }, "<leader>lf", conform.format, { desc = "Format File" })
-vim.keymap.set("n", "<leader>lg", vim.lsp.buf.definition, { desc = "Go To Definition" })
+vim.keymap.set("n", "<leader>lg", telescope_builtin.lsp_definitions, { desc = "Go To Definition" })
 vim.keymap.set(
 	"n",
 	"<leader>lr",
-	require("telescope.builtin").lsp_references,
+	telescope_builtin.lsp_references,
 	{ desc = "Show References", silent = true, noremap = true }
 )
 
