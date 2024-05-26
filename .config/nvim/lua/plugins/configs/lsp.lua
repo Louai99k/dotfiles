@@ -5,12 +5,10 @@ local telescope_builtin = require("telescope.builtin")
 
 -- Set Up
 require("mason").setup()
-require("mason-lspconfig").setup()
-require("mason-tool-installer").setup({
+require("mason-lspconfig").setup({
 	ensure_installed = {
-		"lua-language-server",
-		"stylua",
-		"prettier",
+		"lua_ls",
+		"clangd",
 	},
 })
 conform.setup({
@@ -21,6 +19,7 @@ conform.setup({
 		typescriptreact = { "prettier" },
 		javascriptreact = { "prettier" },
 		json = { "prettier" },
+		cpp = { "clang-format" },
 	},
 })
 lspconfig.lua_ls.setup({
@@ -33,6 +32,7 @@ lspconfig.lua_ls.setup({
 	},
 	capabilities = lua_capabilities,
 })
+lspconfig.clangd.setup({})
 
 -- Key Bindings
 vim.keymap.set({ "v", "n" }, "<leader>lf", conform.format, { desc = "Format File" })
