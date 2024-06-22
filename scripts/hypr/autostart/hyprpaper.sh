@@ -14,4 +14,9 @@ else
   cp ~/dotfiles/wallpapers/default.png ~/wallpapers/active.png
 fi
 
+if which "colorsnap" > /dev/null; then
+  colorsnap ~/wallpapers/active.png > ~/.cache/me/colors/colors.txt
+  ~/dotfiles/scripts/btop/theme-generator.sh
+fi
+
 hyprpaper
