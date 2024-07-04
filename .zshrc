@@ -19,6 +19,12 @@ alias grep='grep --color=auto'
 # Prompt
 PROMPT="%d > "
 
+# ZSH history
+HISTFILE=~/.zsh_histroy
+HISTSIZE=10000
+SAVEHIST=10000
+setopt SHARE_HISTORY
+
 # node version manager (nvm)
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
