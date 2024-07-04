@@ -25,6 +25,11 @@ HISTSIZE=10000
 SAVEHIST=10000
 setopt SHARE_HISTORY
 
+# Android Studio's Env Vars
+export ANDROID_HOME=~/Android/Sdk
+export JAVA_HOME=/usr/lib/jvm/java-17-openjdk
+export PATH=$PATH:$JAVA_HOME/bin:$ANDROID_HOME/tools:$ANDROID_HOME/tools/bin:$ANDROID_HOME/platform-tools
+
 # node version manager (nvm)
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
