@@ -15,8 +15,10 @@ else
 fi
 
 if which "colorsnap" > /dev/null; then
-  colorsnap ~/wallpapers/active.png > ~/.cache/me/colors/colors.txt
+  colorsnap -f ~/wallpapers/active.png > ~/.cache/me/colors/colors.txt
+  colorsnap -f ~/wallpapers/active.png -d -0.25 > ~/.cache/me/colors/light-colors.txt
   ~/dotfiles/scripts/btop/theme-generator.sh
+  ~/dotfiles/scripts/kitty/theme-generator.sh
 fi
 
 hyprpaper
