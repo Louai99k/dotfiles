@@ -135,6 +135,13 @@ local plugins = {
 		end,
 		lazy = false,
 	},
+	-- Colorizer
+	{
+		"norcalli/nvim-colorizer.lua",
+		config = function()
+			require("colorizer").setup()
+		end,
+	},
 }
 
 require("lazy").setup(plugins)
