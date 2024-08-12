@@ -6,3 +6,5 @@
 	name = Louai99k
 [credential]
 	helper = store
+[core]
+  editor = nvim
