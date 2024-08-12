@@ -15,6 +15,8 @@ fi
 # Aliases
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
+alias 'tmux a'='tmux attach'
+alias 'vol'='pactl set-sink-volume @DEFAULT_SINK@'
 
 # Prompt
 PROMPT="%d > "
