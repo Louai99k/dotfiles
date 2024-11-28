@@ -1,2 +1,3 @@
-\.config/btop/themes/
-\.config/kitty/themes/
+.config/btop/themes/
+.config/kitty/themes/
+.config/btop/*.log
