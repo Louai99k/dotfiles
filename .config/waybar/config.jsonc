@@ -15,8 +15,8 @@
   ],
 
   "modules-left": [
-    "memory",
-    "temperature"
+    "hyprland/language",
+    "memory"
   ],
 
   "clock": {
@@ -50,7 +50,8 @@
     "tooltip-format": "{used} GiB / {total} Gib"
   },
 
-  "temperature": {
-    "format": "Cpu Temp: {temperatureC}°C"
+  "hyprland/language": {
+    "format": "{}",
+    "keyboard-name": "at-translated-set-2-keyboard"
   }
 }
