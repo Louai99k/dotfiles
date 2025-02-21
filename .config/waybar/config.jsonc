@@ -47,7 +47,8 @@
 
   "memory": {
     "format": "Ram Usage: {percentage}%",
-    "tooltip-format": "{used} GiB / {total} Gib"
+    "tooltip-format": "{used} GiB / {total} Gib",
+    "interval": 5
   },
 
   "hyprland/language": {
