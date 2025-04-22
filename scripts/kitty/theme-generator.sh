@@ -29,6 +29,11 @@ if [ -e $COLOR_FILE_PATH ]; then
   light1=${light_colors[0]}
   light2=${light_colors[1]}
   light3=${light_colors[2]}
+  light4=${light_colors[3]}
+  light5=${light_colors[4]}
+  light6=${light_colors[5]}
+  light7=${light_colors[6]}
+  light8=${light_colors[7]}
   cat << EOL > $THEME_FILE_PATH
 foreground              #$light1
 background              #1E1E2E
@@ -56,20 +61,20 @@ mark3_foreground #1E1E2E
 mark3_background #$color5
 color0 #45475A
 color8 #585B70
-color1 #F38BA8
-color9 #F38BA8
-color2  #A6E3A1
-color10 #A6E3A1
-color3  #F9E2AF
-color11 #F9E2AF
-color4  #89B4FA
-color12 #89B4FA
+color1 #$color1
+color9 #$color1
+color2  #FFFFFF
+color10 #FFFFFF
+color3  #$light7
+color11 #$light7
+color4  #$light5
+color12 #$light5
 color5  #F5C2E7
 color13 #F5C2E7
-color6  #94E2D5
-color14 #94E2D5
-color7  #BAC2DE
-color15 #A6ADC8
+color6  #$light8
+color14 #$light8
+color7 #45475A
+color15 #585B70
 EOL
 else
   echo "" > $THEME_FILE_PATH
