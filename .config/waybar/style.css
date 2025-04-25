@@ -37,6 +37,14 @@ tooltip {
   color: #eb6f92;
 }
 
+#workspaces button.empty label {
+  color: #6e6a86;
+}
+
+#workspaces button.empty.active label {
+  color: #eb6f92;
+}
+
 #network,
 #wireplumber,
 #battery,
