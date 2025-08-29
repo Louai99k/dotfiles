@@ -29,7 +29,7 @@
     "format": "{capacity}% {icon}",
     "format-icons": ["󰁺", "󰁼", "󰁾", "󰂀", "󰁹"],
     "format-charging": "{capacity}% 󰂄",
-    "interval": 10
+    "interval": 1
   },
 
   "wireplumber": {
@@ -44,9 +44,8 @@
   },
 
   "network": {
-    "format-wifi": "{essid}   {bandwidthTotalBits}",
-    "format-disconnected": "No Network",
-    "interval": 20
+    "format-wifi": "{essid}  ",
+    "format-disconnected": "No Network"
   },
 
   "memory": {
