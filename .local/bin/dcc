@@ -1,0 +1,28 @@
+#!/bin/env bash
+
+SCRIPT_FOLDER="/home/luay/.local/bin-scripts/dcc"
+COMMAND=$1
+
+shift
+
+case "$COMMAND" in
+  master-db)
+    "$SCRIPT_FOLDER/download_master_db.sh" "$@"
+    ;;
+  web-tmux)
+    "$SCRIPT_FOLDER/web_tmux.sh"
+    ;;
+  mobile-tmux)
+    "$SCRIPT_FOLDER/mobile_tmux.sh"
+    ;;
+  db-up)
+    docker-compose -f /home/luay/me/childcare/_childcare/database-docker/docker-compose.yml up -d
+    ;;
+  db-down)
+    docker-compose -f /home/luay/me/childcare/_childcare/database-docker/docker-compose.yml down
+    ;;
+  *)
+    echo "Usage: dcc {master-db|db} [options]"
+    exit 1
+    ;;
+esac

@@ -41,5 +41,6 @@ export NVM_DIR="$HOME/.nvm"
 eval "$(fzf --zsh)"
 eval "$(zoxide init zsh)"
 
+export PATH="/home/luay/.local/bin:$PATH"
 export PATH="/home/luay/.config/herd-lite/bin:$PATH"
 export PHP_INI_SCAN_DIR="/home/luay/.config/herd-lite/bin:$PHP_INI_SCAN_DIR"
