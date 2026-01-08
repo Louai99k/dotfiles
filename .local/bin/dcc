@@ -9,10 +9,10 @@ case "$COMMAND" in
   master-db)
     "$SCRIPT_FOLDER/download_master_db.sh" "$@"
     ;;
-  web-tmux)
+  web)
     "$SCRIPT_FOLDER/web_tmux.sh"
     ;;
-  mobile-tmux)
+  mobile)
     "$SCRIPT_FOLDER/mobile_tmux.sh"
     ;;
   db-up)
