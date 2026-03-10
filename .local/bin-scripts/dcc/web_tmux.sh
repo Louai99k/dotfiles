@@ -26,7 +26,7 @@ if [ $? != 0 ]; then
   # Create the third window named 'terms' and navigate to the specified path
   tmux new-window -t $SESSION:3 -n 'terms'
   tmux send-keys -t $SESSION:3 'cd ~/me/childcare/backend' C-m
-  tmux send-keys -t $SESSION:3 'nvm use 18' C-m
+  tmux send-keys -t $SESSION:3 'nvm use 20' C-m
   tmux split-window -t $SESSION:3
   tmux send-keys -t $SESSION:3 'cd ~/me/childcare/frontend' C-m
   tmux select-layout -t $SESSION:3 'main-horizontal'

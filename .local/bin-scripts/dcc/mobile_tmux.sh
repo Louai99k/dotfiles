@@ -27,11 +27,11 @@ if [ $? != 0 ]; then
 
   tmux rename-window -t $MISC_SESSION:1 'backend'
   tmux send-keys -t $MISC_SESSION:1 'cd ~/me/childcare/backend' C-m
-  tmux send-keys -t $MISC_SESSION:1 'nvm use 18' C-m
+  tmux send-keys -t $MISC_SESSION:1 'nvm use 20' C-m
 
   tmux new-window -t $MISC_SESSION:2 -n 'term'
   tmux send-keys -t $MISC_SESSION:2 'cd ~/me/childcare/backend' C-m
-  tmux send-keys -t $MISC_SESSION:2 'nvm use 18' C-m
+  tmux send-keys -t $MISC_SESSION:2 'nvm use 20' C-m
 
   tmux new-window -t $MISC_SESSION:3 -n 'misc'
   tmux send-keys -t $MISC_SESSION:3 'cd ~/me/childcare/backend' C-m
