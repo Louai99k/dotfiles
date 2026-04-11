@@ -18,11 +18,8 @@ alias grep='grep --color=auto'
 alias 'tmux a'='tmux attach'
 alias 'vol'='pactl set-sink-volume @DEFAULT_SINK@'
 
-# Prompt
-PROMPT="%d > "
-
 # ZSH history
-HISTFILE=~/.zsh_histroy
+HISTFILE=~/.zsh_history
 HISTSIZE=10000
 SAVEHIST=10000
 setopt SHARE_HISTORY
@@ -37,10 +34,17 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/zsh_completion" ] && \. "$NVM_DIR/zsh_completion"  # This loads nvm zsh_completion
 
-# executing cli utils
-eval "$(fzf --zsh)"
-eval "$(zoxide init zsh)"
-
+# General exports
 export PATH="/home/luay/.local/bin:$PATH"
 export PATH="/home/luay/.config/herd-lite/bin:$PATH"
 export PHP_INI_SCAN_DIR="/home/luay/.config/herd-lite/bin:$PHP_INI_SCAN_DIR"
+export EDITOR="nvim"
+
+# OH_MY_ZSH
+export ZSH="$HOME/.oh-my-zsh"
+ZSH_THEME="gnzh"
+zstyle ':omz:update' mode disabled
+zstyle ':omz:update' mode reminder
+HIST_STAMPS="yyyy-mm-dd"
+plugins=(git vi-mode fzf zoxide)
+source $ZSH/oh-my-zsh.sh
