@@ -3,11 +3,15 @@
 set -e
 
 BASE_PATH="/home/luay/me/childcare/_childcare/database-docker/pgadmin/storage/admin_admin.com"
+FILE_NAME=""
 
-while getopts "d" opt; do
+while getopts "df:" opt; do
   case $opt in
     d)
       rm "$BASE_PATH"/master_dump_*
+      ;;
+    f)
+      FILE_NAME="$OPTARG"
       ;;
     \?)
       echo "Invalid option"
@@ -16,7 +20,10 @@ while getopts "d" opt; do
   esac
 done
 
-FILE_NAME=$(date +"%Y%m%d")
+if [[ -z "$FILE_NAME" ]]; then
+  FILE_NAME=$(date +"%Y%m%d")
+fi
+
 
 aws s3 cp \
   s3://mdc-db-dumps/ \
