@@ -39,6 +39,8 @@ export PATH="/home/luay/.local/bin:$PATH"
 export PATH="/home/luay/.config/herd-lite/bin:$PATH"
 export PHP_INI_SCAN_DIR="/home/luay/.config/herd-lite/bin:$PHP_INI_SCAN_DIR"
 export EDITOR="nvim"
+export PUID="$(id -u)"
+export PGID="$(id -g)"
 
 # OH_MY_ZSH
 export ZSH="$HOME/.oh-my-zsh"
