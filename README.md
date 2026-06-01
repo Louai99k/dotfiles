@@ -5,7 +5,7 @@
 
 1. Create `.config`, `.icons` and `.local` folders at `/home/user`
 
-2. Run `pacman -S git neovim wl-clipboard fzf zioxide zsh gcc gitui stow tmux make`
+2. Run `pacman -S git neovim wl-clipboard fzf zioxide zsh gcc gitui stow tmux make unzip`
 
 3. Run:
 
