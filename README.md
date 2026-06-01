@@ -5,7 +5,7 @@
 
 1. Create `.config`, `.icons` and `.local` folders at `/home/user`
 
-2. Run `pacman -S git neovim wl-clipboard fzf zioxide zsh gcc gitui stow tmux`
+2. Run `pacman -S git neovim wl-clipboard fzf zioxide zsh gcc gitui stow tmux make`
 
 3. Run:
 
@@ -23,9 +23,13 @@ EOF
 
 5. After that install Oh My ZSH from [here](https://ohmyz.sh/#install) and **DON'T REPLACE `.zshrc` file**
 
+6. Install [nvm](https://github.com/nvm-sh/nvm). Installing `nvm` will add a line to `.zshrc` so remove it
+
 ### Neovim
 
 1. Open neovim once to get all plugins installed
+
+2. Run `MasonInstall lua-language-server` and all other required lsp servers
 
 ### TMUX
 
