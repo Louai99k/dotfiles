@@ -21,9 +21,15 @@ EOF
 ```
 4. Clone this Repo with `--recursive` flag fro neovim submodule
 
-5. After that install Oh My ZSH from [here](https://ohmyz.sh/#install) and **DON'T REPLACE `.zshrc` file**
+5. Install Oh My ZSH from [here](https://ohmyz.sh/#install) and **DON'T REPLACE `.zshrc` file**
 
-6. Install [nvm](https://github.com/nvm-sh/nvm). Installing `nvm` will add a line to `.zshrc` so remove it
+### Node
+
+1. Install [nvm](https://github.com/nvm-sh/nvm). Installing `nvm` will add a line to `.zshrc` so remove it
+
+### Rust
+
+1. Install `rustup` via [link](https://rustup.rs/)
 
 ### Neovim
 
