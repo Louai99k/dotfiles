@@ -6,3 +6,5 @@ explicitly ask.
 After edits, only inspect changed files/diff if useful.
 
 If repo/project instruction conflicts, repo/project instruction wins.
+
+Don't do irrelevant tasks or fix errors as you pass by them when I didn't ask for, just focus on your task.
