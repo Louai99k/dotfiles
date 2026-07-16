@@ -5,7 +5,7 @@
 
 1. Create `.config`, `.icons` and `.local` folders at `/home/user`
 
-2. Run `pacman -S git neovim wl-clipboard fzf zioxide zsh gcc gitui stow tmux make unzip ripgrep`
+2. Run `pacman -S git neovim wl-clipboard fzf zioxide zsh gcc gitui stow tmux make unzip ripgrep docker docker-compose docker-buildx`
 
 3. Run:
 
@@ -42,3 +42,9 @@ EOF
 1. Install `tmux` `tpm` with `git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm`
 
 2. Open `tmux` and `Ctrl+B` then `I`
+
+
+### Docker
+
+1. Run `sudo usermod -aG docker $USER` for non-sudo usage
+2. Run `sudo systemctl enable --now docker.service` for enabling docker
