@@ -8,3 +8,4 @@
 	helper = store
 [core]
   editor = nvim
+	autocrlf = false
