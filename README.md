@@ -5,7 +5,7 @@
 
 1. Create `.config`, `.icons` and `.local` folders at `/home/user`
 
-2. Run `pacman -S git neovim wl-clipboard fzf zioxide zsh gcc gitui stow tmux make unzip ripgrep docker docker-compose docker-buildx`
+2. Run `pacman -S git neovim wl-clipboard fzf zioxide zsh gcc gitui stow tmux make unzip ripgrep docker docker-compose docker-buildx yazi`
 
 3. Run:
 
