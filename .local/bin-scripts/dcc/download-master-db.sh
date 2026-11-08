@@ -24,7 +24,6 @@ if [[ -z "$FILE_NAME" ]]; then
   FILE_NAME=$(date +"%Y%m%d")
 fi
 
-
 aws s3 cp \
   s3://mdc-db-dumps/ \
   "$BASE_PATH"/ \
