@@ -7,11 +7,8 @@
 # \/ /_/   \_/\/   \/ \_/\/   \_/ \_/\/   \__/\/ \_/ 
 # --------------------------------------------------
 
-if [[ -e ~/wallpapers/wallpaper.png ]]; then
-  echo "Image exists"
-else
-  mkdir -p ~/wallpapers
-  cp ~/dotfiles/wallpapers/default.png ~/wallpapers/wallpaper.png
-fi
+# ~/.config/theme/wallpaper is linked by theme.sh from palette.conf. It
+# runs at the same time on login, so create the link first if it's missing.
+[[ -e ~/.config/theme/wallpaper ]] || ~/dotfiles/scripts/general/theme.sh
 
 hyprpaper

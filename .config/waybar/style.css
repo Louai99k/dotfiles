@@ -1,3 +1,5 @@
+@import url("file:///home/luay/.config/theme/colors.css");
+
 * {
   all: initial;
   font-family:
@@ -10,16 +12,16 @@
 
 window#waybar {
   background-color: transparent;
-  color: #e0def4;
+  color: @text;
 }
 
 tooltip {
-  background-color: #191724;
+  background-color: @base;
   border-radius: 5px;
 }
 
 #workspaces {
-  background-color: #26233a;
+  background-color: @overlay;
   border-radius: 5px;
   padding: 0 10px;
 }
@@ -34,15 +36,15 @@ tooltip {
 }
 
 #workspaces button.active label {
-  color: #c4a7e7;
+  color: @accent;
 }
 
 #workspaces button.empty label {
-  color: #6e6a86;
+  color: @muted;
 }
 
 #workspaces button.empty.active label {
-  color: #c4a7e7;
+  color: @accent;
 }
 
 #network,
@@ -51,7 +53,7 @@ tooltip {
 #language,
 #memory,
 #clock {
-  background-color: #26233a;
+  background-color: @overlay;
   border-radius: 5px;
   padding: 0 5px;
 }

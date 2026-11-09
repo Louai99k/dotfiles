@@ -1,0 +1,8 @@
+# Generated from ~/.config/theme/palette.conf by theme.sh. Edit the template in ~/.config/theme/templates.
+background-color=#{{overlay}}
+text-color=#{{text}}
+border-color=#{{hl_high}}
+progress-color=over #{{pine}}
+
+[urgency=high]
+border-color=#{{love}}

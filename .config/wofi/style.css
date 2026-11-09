@@ -1,9 +1,11 @@
+@import url("file:///home/luay/.config/theme/colors.css");
+
 window {
   margin: 0px;
-  background-color: #191724;
+  background-color: @base;
   border-radius: 0px;
-  border: 2px solid #c4a7e7;
-  color: #e0def4;
+  border: 2px solid @accent;
+  color: @text;
   font-family: "JetBrainsMono Nerd Font";
   font-size: 14px;
 }
@@ -13,22 +15,22 @@ window {
   border-radius: 0px;
   border: none;
   border-radius: 0px;
-  color: #c4a7e7;
-  background-color: #26233a;
+  color: @accent;
+  background-color: @overlay;
 }
 
 #inner-box {
   margin: 5px;
   border: none;
-  background-color: #26233a;
-  color: #191724;
+  background-color: @overlay;
+  color: @base;
   border-radius: 0px;
 }
 
 #outer-box {
   margin: 15px;
   border: none;
-  background-color: #191724;
+  background-color: @base;
 }
 
 #scroll {
@@ -39,19 +41,19 @@ window {
 #text {
   margin: 5px;
   border: none;
-  color: #e0def4;
+  color: @text;
 }
 
 #entry:selected {
-  background-color: #c4a7e7;
-  color: #191724;
+  background-color: @accent;
+  color: @base;
   border-radius: 0px;
   outline: none;
 }
 
 #entry:selected * {
-  background-color: #c4a7e7;
-  color: #191724;
+  background-color: @accent;
+  color: @base;
   border-radius: 0px;
   outline: none;
 }
