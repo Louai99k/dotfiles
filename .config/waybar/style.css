@@ -19,7 +19,7 @@ tooltip {
 }
 
 #workspaces {
-  background-color: #2a283e;
+  background-color: #26233a;
   border-radius: 5px;
   padding: 0 10px;
 }
@@ -34,7 +34,7 @@ tooltip {
 }
 
 #workspaces button.active label {
-  color: #eb6f92;
+  color: #c4a7e7;
 }
 
 #workspaces button.empty label {
@@ -42,7 +42,7 @@ tooltip {
 }
 
 #workspaces button.empty.active label {
-  color: #eb6f92;
+  color: #c4a7e7;
 }
 
 #network,
@@ -51,7 +51,7 @@ tooltip {
 #language,
 #memory,
 #clock {
-  background-color: #2a283e;
+  background-color: #26233a;
   border-radius: 5px;
   padding: 0 5px;
 }
