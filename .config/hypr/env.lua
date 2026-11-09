@@ -12,8 +12,8 @@ hl.env("GDK_BACKEND", "wayland")
 -- Tells Qt based applications to pick your theme from qt6ct.
 hl.env("QT_QPA_PLATFORMTHEME", "qt6ct")
 
--- Tell Qt applications to use the Wayland backend
-hl.env("QT_QPA_PLATFORM", "wayland")
+-- Tell Qt applications to use the Wayland backend, falling back to X11 (XWayland) for apps without Wayland support
+hl.env("QT_QPA_PLATFORM", "wayland;xcb")
 
 -- Tell Electron to adapt to wayland
 hl.env("ELECTRON_OZONE_PLATFORM_HINT", "wayland")

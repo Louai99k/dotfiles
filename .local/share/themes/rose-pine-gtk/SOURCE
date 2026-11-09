@@ -1,0 +1,2 @@
+Vendored from https://github.com/rose-pine/gtk at 598be13d (gtk3/rose-pine-gtk).
+Only index.theme and gtk-3.20/{gtk.css,gtk-dark.css,gtk.gresource} are kept; GTK 3.24 loads gtk-3.20.
