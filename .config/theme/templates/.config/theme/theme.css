@@ -1,4 +1,4 @@
-/* Generated from ~/.config/theme/palette.conf by theme.sh. Do not edit. */
+/* Colors only: GTK CSS has no font variables. Generated from ~/.config/theme/palette.conf by theme.sh. Do not edit. */
 @define-color base #{{base}};
 @define-color surface #{{surface}};
 @define-color overlay #{{overlay}};

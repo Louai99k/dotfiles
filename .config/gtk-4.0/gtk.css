@@ -1,4 +1,4 @@
-@import url("../theme/colors.css");
+@import url("../theme/theme.css");
 
 @define-color accent_bg_color @accent;
 @define-color accent_fg_color @base;

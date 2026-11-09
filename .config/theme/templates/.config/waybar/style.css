@@ -1,9 +1,9 @@
-@import url("file:///home/luay/.config/theme/colors.css");
+@import url("file:///home/luay/.config/theme/theme.css");
 
 * {
   all: initial;
   font-family:
-    JetBrainsMono Nerd Font,
+    {{font}},
     sans-serif;
   font-size: 14px;
   border: none;

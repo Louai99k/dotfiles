@@ -1,5 +1,5 @@
 #!/bin/bash
-# Renders every color config and the wallpaper link from ~/.config/theme/palette.conf,
+# Renders every color and font config and the wallpaper link from ~/.config/theme/palette.conf,
 # then applies the settings that can't live in files (gsettings, kdeglobals).
 # Runs at every Hyprland start via bootstrap.sh.
 #
@@ -27,9 +27,20 @@ if [[ -n "${pal[${pal[accent]}]:-}" ]]; then
 	pal[accent]="${pal[${pal[accent]}]}"
 fi
 
+font_families="$(fc-list : family | tr ',' '\n')"
 sed_script=""
 for key in "${!pal[@]}"; do
 	[[ "$key" == wallpaper ]] && continue
+	if [[ "$key" == font* ]]; then
+		if [[ "$key" != font_size ]] && ! grep -qxF "${pal[$key]}" <<<"$font_families"; then
+			echo "theme.sh: $key=${pal[$key]} is not an installed font family (see fc-list : family)" >&2
+		fi
+		value="${pal[$key]//\\/\\\\}"
+		value="${value//\//\\/}"
+		value="${value//&/\\&}"
+		sed_script+="s/{{$key}}/$value/g;"
+		continue
+	fi
 	hex="${pal[$key],,}"
 	if [[ ! "$hex" =~ ^[0-9a-f]{6}$ ]]; then
 		echo "theme.sh: $key=$hex in palette.conf is not a 6-digit hex color" >&2
@@ -119,9 +130,9 @@ gs gtk-theme "$GTK_THEME"
 gs icon-theme 'breeze-dark'
 gs cursor-theme 'breeze_cursors'
 gs cursor-size 24
-gs font-name 'JetBrainsMono Nerd Font 11'
-gs document-font-name 'JetBrainsMono Nerd Font 11'
-gs monospace-font-name 'JetBrainsMono Nerd Font Mono 11'
+gs font-name "${pal[font]} ${pal[font_size]}"
+gs document-font-name "${pal[font]} ${pal[font_size]}"
+gs monospace-font-name "${pal[font_mono]} ${pal[font_size]}"
 gs color-scheme 'prefer-dark'
 
 # --- KDE apps -----------------------------------------------------------------

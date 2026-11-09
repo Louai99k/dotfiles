@@ -1,4 +1,4 @@
-@import url("file:///home/luay/.config/theme/colors.css");
+@import url("file:///home/luay/.config/theme/theme.css");
 
 window {
   margin: 0px;
@@ -6,7 +6,7 @@ window {
   border-radius: 0px;
   border: 2px solid @accent;
   color: @text;
-  font-family: "JetBrainsMono Nerd Font";
+  font-family: "{{font}}";
   font-size: 14px;
 }
 

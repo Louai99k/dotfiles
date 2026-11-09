@@ -15,3 +15,4 @@ $hl_low = rgb({{hl_low}})
 $hl_med = rgb({{hl_med}})
 $hl_high = rgb({{hl_high}})
 $accent = rgb({{accent}})
+$font = {{font}}
