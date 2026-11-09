@@ -14,4 +14,7 @@ hl.window_rule({
 	float = true,
 	-- set the size of the window as necessary
 	size = "600 500",
+	-- kitty asks to be maximized on launch, which would cover the screen
+	suppress_event = "maximize fullscreen",
+	center = true,
 })
