@@ -35,7 +35,8 @@
       "Bash(hyprctl binds*)",
       "Bash(systemctl status *)",
       "Bash(systemctl --user status *)",
-      "Bash(journalctl *)"
+      "Bash(journalctl *)",
+      "Bash(git log *)"
     ],
     "deny": [
       "Bash(sudo *)",
@@ -57,6 +58,8 @@
       "Bash(journalctl *--vacuum*)",
       "Bash(journalctl *--rotate*)",
       "Bash(journalctl *--flush*)",
+      "Bash(git log *--output*)",
+      "Bash(git log *--ext-diff*)",
       "Read(//**/.env)",
       "Read(//**/.env.*)",
       "Read(~/.ssh/**)",
@@ -103,15 +106,6 @@
           {
             "type": "command",
             "command": "\"$HOME/.claude/hooks/caveman.sh\" native-hook",
-            "timeout": 30
-          }
-        ]
-      },
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "\"$HOME/.claude/hooks/caveman.sh\" shrink-hook",
             "timeout": 30
           }
         ]
