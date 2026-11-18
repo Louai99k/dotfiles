@@ -1,0 +1,177 @@
+{
+  "env": {
+    "ANTHROPIC_BASE_URL": "http://127.0.0.1:8787/w/claude",
+    "_CLAUDE_CODE_ASSUME_FIRST_PARTY_BASE_URL": "1",
+    "ENABLE_TOOL_SEARCH": "true",
+    "DISABLE_TELEMETRY": "1",
+    "DISABLE_ERROR_REPORTING": "1"
+  },
+  "permissions": {
+    "defaultMode": "auto"
+  },
+  "model": "fable",
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "'/home/luay/.caveman/bin/caveman-proxy' native-hook claude --adapter '/home/luay/.nvm/versions/node/v22.23.4/lib/node_modules/@caveman-ai/cli/dist/native-hook-fast.js' --node '/home/luay/.nvm/versions/node/v22.23.4/bin/node'",
+            "timeout": 30
+          }
+        ]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "'/home/luay/.caveman/bin/caveman-proxy' native-hook claude --adapter '/home/luay/.nvm/versions/node/v22.23.4/lib/node_modules/@caveman-ai/cli/dist/native-hook-fast.js' --node '/home/luay/.nvm/versions/node/v22.23.4/bin/node'",
+            "timeout": 30
+          }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "'/home/luay/.caveman/bin/caveman-proxy' native-hook claude --adapter '/home/luay/.nvm/versions/node/v22.23.4/lib/node_modules/@caveman-ai/cli/dist/native-hook-fast.js' --node '/home/luay/.nvm/versions/node/v22.23.4/bin/node'",
+            "timeout": 30
+          }
+        ]
+      },
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "'/home/luay/.nvm/versions/node/v22.23.4/bin/node' '/home/luay/.nvm/versions/node/v22.23.4/bin/caveman' shrink-hook",
+            "timeout": 30
+          }
+        ]
+      },
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/home/luay/.local/share/caveman-blocks/bin/caveman-blocks hook --harness claude",
+            "timeout": 5
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "'/home/luay/.caveman/bin/caveman-proxy' native-hook claude --adapter '/home/luay/.nvm/versions/node/v22.23.4/lib/node_modules/@caveman-ai/cli/dist/native-hook-fast.js' --node '/home/luay/.nvm/versions/node/v22.23.4/bin/node'",
+            "timeout": 30
+          }
+        ]
+      }
+    ],
+    "PostToolUseFailure": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "'/home/luay/.caveman/bin/caveman-proxy' native-hook claude --adapter '/home/luay/.nvm/versions/node/v22.23.4/lib/node_modules/@caveman-ai/cli/dist/native-hook-fast.js' --node '/home/luay/.nvm/versions/node/v22.23.4/bin/node'",
+            "timeout": 30
+          }
+        ]
+      }
+    ],
+    "PreCompact": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "'/home/luay/.caveman/bin/caveman-proxy' native-hook claude --adapter '/home/luay/.nvm/versions/node/v22.23.4/lib/node_modules/@caveman-ai/cli/dist/native-hook-fast.js' --node '/home/luay/.nvm/versions/node/v22.23.4/bin/node'",
+            "timeout": 30
+          }
+        ]
+      }
+    ],
+    "SubagentStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "'/home/luay/.caveman/bin/caveman-proxy' native-hook claude --adapter '/home/luay/.nvm/versions/node/v22.23.4/lib/node_modules/@caveman-ai/cli/dist/native-hook-fast.js' --node '/home/luay/.nvm/versions/node/v22.23.4/bin/node'",
+            "timeout": 30
+          }
+        ]
+      }
+    ],
+    "SubagentStop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "'/home/luay/.caveman/bin/caveman-proxy' native-hook claude --adapter '/home/luay/.nvm/versions/node/v22.23.4/lib/node_modules/@caveman-ai/cli/dist/native-hook-fast.js' --node '/home/luay/.nvm/versions/node/v22.23.4/bin/node'",
+            "timeout": 30
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "'/home/luay/.caveman/bin/caveman-proxy' native-hook claude --adapter '/home/luay/.nvm/versions/node/v22.23.4/lib/node_modules/@caveman-ai/cli/dist/native-hook-fast.js' --node '/home/luay/.nvm/versions/node/v22.23.4/bin/node'",
+            "timeout": 30
+          }
+        ]
+      }
+    ],
+    "SessionEnd": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "'/home/luay/.caveman/bin/caveman-proxy' native-hook claude --adapter '/home/luay/.nvm/versions/node/v22.23.4/lib/node_modules/@caveman-ai/cli/dist/native-hook-fast.js' --node '/home/luay/.nvm/versions/node/v22.23.4/bin/node'",
+            "timeout": 30
+          }
+        ]
+      }
+    ]
+  },
+  "statusLine": {
+    "type": "command",
+    "command": "bash \"$HOME/.claude/caveman-statusline.sh\""
+  },
+  "enabledPlugins": {
+    "caveman@caveman": true
+  },
+  "extraKnownMarketplaces": {
+    "caveman": {
+      "source": {
+        "source": "github",
+        "repo": "JuliusBrussee/caveman"
+      }
+    }
+  },
+  "modelSettings": {
+    "claude-opus-5-5": {
+      "autoCompactWindow": 400000
+    },
+    "claude-fable-5-2": {
+      "effortLevel": "medium",
+      "autoCompactWindow": 400000
+    }
+  },
+  "voice": {
+    "enabled": true,
+    "mode": "hold"
+  },
+  "theme": "dark-ansi",
+  "attribution": false,
+  "cleanupPeriodDays": 90,
+  "autoUpdatesChannel": "stable",
+  "preferredNotifChannel": "auto"
+}
