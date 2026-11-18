@@ -1,0 +1,5 @@
+- [Hyprland Lua migration](hyprland-lua-migration.md) — config split into Lua files for 0.57; old hyprlang config in git history at d9bbd2d
+- [Configure Claude walkthrough](configure-claude-walkthrough.md) — 11-item plan; per item: explain, web research, ask user questions, build
+- [No Python scripts](no-python-scripts.md) — scripts in Bash, Node as fallback, never Python
+- [Commit directly to master](commit-directly-to-master.md) — no feature branches in the dotfiles repo
+- [Gamer, loves Claude extensibility](user-gamer-claude-extensibility.md) — hooks/plugins/MCP top interest, skills/subagents next

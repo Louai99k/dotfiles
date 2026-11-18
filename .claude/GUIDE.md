@@ -24,6 +24,7 @@ Docs root: https://code.claude.com/docs/en/ (add the page name, e.g. `hooks`,
 | A ready-made bundle of skills/agents/hooks/MCP             | Plugin                 | [8](#8-plugins)            |
 | Different keyboard shortcuts in the terminal app           | Keybindings            | [9](#9-keybindings)        |
 | Live info at the bottom of the terminal app                | Status line            | [10](#10-status-line)      |
+| Claude to remember something between sessions in a repo    | Auto memory            | [11](#11-memory)           |
 
 Rule of thumb: instructions and skills are advice Claude may weigh; hooks and
 permission rules are enforced by the harness. If it must happen, use a hook.
@@ -40,6 +41,7 @@ permission rules are enforced by the harness. If it must happen, use a hook.
 | `.claude/agents/web-researcher.md`    | file link in real dir      | Web research subagent (Sonnet), only when named    |
 | `.codex/agents/web-researcher.toml`   | file link in real dir      | Same for Codex (`gpt-6.1-terra`)                   |
 | `.codex/skills/organize-commits/`     | file link in real dir      | Codex-only commit skill                            |
+| `.claude/projects/-home-luay-dotfiles/memory/` | folder link       | Claude's auto memory for this repo only            |
 
 Not tracked on purpose: `~/.claude.json` (state + account data),
 `~/.claude/.credentials.json`, `history.jsonl`, `projects/`, `sessions/`,
@@ -191,6 +193,28 @@ Currently caveman's mode badge. Terminal app only.
 - Known issue: `~/.claude/caveman-statusline.sh` is not tracked, so a machine
   without caveman shows nothing or an error. Fix like the hooks wrapper if it
   matters.
+
+## 11. Memory
+
+Claude's own notes, so a new session knows what earlier ones learned.
+CLAUDE.md is what I write; memory is what Claude writes.
+
+- Per repo: `~/.claude/projects/<repo-path>/memory/`, with a `MEMORY.md`
+  index (first 200 lines / 25KB load every session) and one file per note.
+  Note types: user, feedback, project, reference.
+- Claude saves on its own, or when I say "remember X". `/memory` browses,
+  edits and toggles it. Notes are plain markdown: edit or delete freely.
+- Advice only, like CLAUDE.md. Must-happen behavior goes in a hook.
+- Settings: `autoMemoryEnabled` (on by default), `autoMemoryDirectory`
+  (one path; at user level probably shared by all projects),
+  `CLAUDE_CODE_DISABLE_AUTO_MEMORY=1`.
+- Machine-local by default. Only the dotfiles repo's memory is tracked here;
+  new notes show up in `git status` for review. Other repos stay local
+  (they can hold private project details).
+- Subagents don't see it; a subagent gets its own via the `memory` field.
+- Codex: memories off (default). `[features] memories = true` turns on
+  background summaries of past chats into `~/.codex/memories/`, one store
+  for all projects, uses rate limit. Don't hand-edit; use `/memories`.
 
 ## Per-machine setup reminders
 
