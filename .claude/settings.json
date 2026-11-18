@@ -74,7 +74,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "'/home/luay/.caveman/bin/caveman-proxy' native-hook claude --adapter '/home/luay/.nvm/versions/node/v22.23.4/lib/node_modules/@caveman-ai/cli/dist/native-hook-fast.js' --node '/home/luay/.nvm/versions/node/v22.23.4/bin/node'",
+            "command": "\"$HOME/.claude/hooks/caveman.sh\" native-hook",
             "timeout": 30
           }
         ]
@@ -85,7 +85,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "'/home/luay/.caveman/bin/caveman-proxy' native-hook claude --adapter '/home/luay/.nvm/versions/node/v22.23.4/lib/node_modules/@caveman-ai/cli/dist/native-hook-fast.js' --node '/home/luay/.nvm/versions/node/v22.23.4/bin/node'",
+            "command": "\"$HOME/.claude/hooks/caveman.sh\" native-hook",
             "timeout": 30
           }
         ]
@@ -96,7 +96,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "'/home/luay/.caveman/bin/caveman-proxy' native-hook claude --adapter '/home/luay/.nvm/versions/node/v22.23.4/lib/node_modules/@caveman-ai/cli/dist/native-hook-fast.js' --node '/home/luay/.nvm/versions/node/v22.23.4/bin/node'",
+            "command": "\"$HOME/.claude/hooks/caveman.sh\" native-hook",
             "timeout": 30
           }
         ]
@@ -105,7 +105,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "'/home/luay/.nvm/versions/node/v22.23.4/bin/node' '/home/luay/.nvm/versions/node/v22.23.4/bin/caveman' shrink-hook",
+            "command": "\"$HOME/.claude/hooks/caveman.sh\" shrink-hook",
             "timeout": 30
           }
         ]
@@ -115,8 +115,18 @@
         "hooks": [
           {
             "type": "command",
-            "command": "/home/luay/.local/share/caveman-blocks/bin/caveman-blocks hook --harness claude",
+            "command": "\"$HOME/.claude/hooks/caveman.sh\" blocks",
             "timeout": 5
+          }
+        ]
+      },
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "\"$HOME/.claude/hooks/guard-bash.sh\"",
+            "timeout": 10
           }
         ]
       }
@@ -126,7 +136,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "'/home/luay/.caveman/bin/caveman-proxy' native-hook claude --adapter '/home/luay/.nvm/versions/node/v22.23.4/lib/node_modules/@caveman-ai/cli/dist/native-hook-fast.js' --node '/home/luay/.nvm/versions/node/v22.23.4/bin/node'",
+            "command": "\"$HOME/.claude/hooks/caveman.sh\" native-hook",
             "timeout": 30
           }
         ]
@@ -137,7 +147,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "'/home/luay/.caveman/bin/caveman-proxy' native-hook claude --adapter '/home/luay/.nvm/versions/node/v22.23.4/lib/node_modules/@caveman-ai/cli/dist/native-hook-fast.js' --node '/home/luay/.nvm/versions/node/v22.23.4/bin/node'",
+            "command": "\"$HOME/.claude/hooks/caveman.sh\" native-hook",
             "timeout": 30
           }
         ]
@@ -148,7 +158,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "'/home/luay/.caveman/bin/caveman-proxy' native-hook claude --adapter '/home/luay/.nvm/versions/node/v22.23.4/lib/node_modules/@caveman-ai/cli/dist/native-hook-fast.js' --node '/home/luay/.nvm/versions/node/v22.23.4/bin/node'",
+            "command": "\"$HOME/.claude/hooks/caveman.sh\" native-hook",
             "timeout": 30
           }
         ]
@@ -159,7 +169,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "'/home/luay/.caveman/bin/caveman-proxy' native-hook claude --adapter '/home/luay/.nvm/versions/node/v22.23.4/lib/node_modules/@caveman-ai/cli/dist/native-hook-fast.js' --node '/home/luay/.nvm/versions/node/v22.23.4/bin/node'",
+            "command": "\"$HOME/.claude/hooks/caveman.sh\" native-hook",
             "timeout": 30
           }
         ]
@@ -170,7 +180,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "'/home/luay/.caveman/bin/caveman-proxy' native-hook claude --adapter '/home/luay/.nvm/versions/node/v22.23.4/lib/node_modules/@caveman-ai/cli/dist/native-hook-fast.js' --node '/home/luay/.nvm/versions/node/v22.23.4/bin/node'",
+            "command": "\"$HOME/.claude/hooks/caveman.sh\" native-hook",
             "timeout": 30
           }
         ]
@@ -181,7 +191,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "'/home/luay/.caveman/bin/caveman-proxy' native-hook claude --adapter '/home/luay/.nvm/versions/node/v22.23.4/lib/node_modules/@caveman-ai/cli/dist/native-hook-fast.js' --node '/home/luay/.nvm/versions/node/v22.23.4/bin/node'",
+            "command": "\"$HOME/.claude/hooks/caveman.sh\" native-hook",
             "timeout": 30
           }
         ]
@@ -192,7 +202,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "'/home/luay/.caveman/bin/caveman-proxy' native-hook claude --adapter '/home/luay/.nvm/versions/node/v22.23.4/lib/node_modules/@caveman-ai/cli/dist/native-hook-fast.js' --node '/home/luay/.nvm/versions/node/v22.23.4/bin/node'",
+            "command": "\"$HOME/.claude/hooks/caveman.sh\" native-hook",
             "timeout": 30
           }
         ]
