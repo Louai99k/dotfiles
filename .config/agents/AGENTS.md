@@ -47,8 +47,8 @@ Shared by Claude Code (imported from `~/.claude/CLAUDE.md`) and Codex (`~/.codex
 
 ## Secrets
 
-- Never read, print or commit secrets: `.env` files, credentials, tokens, API keys, private keys.
-- Before committing, check the staged changes for secrets.
+- Do not read secret files (`.env` files, credentials, tokens, API keys, private keys) as a first approach. When reading one is truly necessary, say why and ask me first.
+- Never print or commit secrets. Before committing, check the staged changes for secrets.
 
 ## Communication
 
