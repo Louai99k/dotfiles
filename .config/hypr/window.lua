@@ -18,3 +18,10 @@ hl.window_rule({
 	suppress_event = "maximize fullscreen",
 	center = true,
 })
+
+hl.window_rule({
+	name = "emoji-picker-float",
+	match = { title = "^Emoji Picker$" },
+	float = true,
+	center = true,
+})
