@@ -2,7 +2,8 @@
 # Runs a caveman hook only when caveman is installed on this machine.
 # Missing caveman, node or the caveman npm package: exit 0 silently, so
 # machines without caveman see no hook errors.
-# Usage: caveman.sh native-hook | shrink-hook | blocks
+# Usage: caveman.sh native-hook | shrink-hook | blocks [claude|codex]
+# The harness (default claude) only changes native-hook.
 
 # nvm's default node, resolved from ~/.nvm/alias without loading nvm.sh
 # (follows alias chains like default -> lts/* -> lts/jod -> v22).
@@ -27,7 +28,7 @@ case "$1" in
     if [ "$1" = native-hook ]; then
       proxy="$HOME/.caveman/bin/caveman-proxy"
       [ -x "$proxy" ] || exit 0
-      exec "$proxy" native-hook claude --adapter "$pkg/dist/native-hook-fast.js" --node "$node"
+      exec "$proxy" native-hook "${2:-claude}" --adapter "$pkg/dist/native-hook-fast.js" --node "$node"
     fi
     cli="$(dirname "$node")/caveman"
     [ -e "$cli" ] || exit 0

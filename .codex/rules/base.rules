@@ -1,0 +1,35 @@
+# Command rules for Codex: the same denies as Claude's settings.json.
+# Patterns match argument prefixes token by token (no wildcards).
+# Codex adds its own "always allow" approvals to default.rules in this folder.
+# Forms these prefixes miss (git -C dir push, ...) are caught by
+# ~/.claude/hooks/guard-bash.sh codex in hooks.json.
+
+prefix_rule(
+    pattern = ["sudo"],
+    decision = "forbidden",
+    justification = "Never run sudo. Tell the user the exact command to run.",
+    match = ["sudo pacman -Syu"],
+)
+
+prefix_rule(
+    pattern = ["pacman", ["-S", "-Sy", "-Syu", "-Syyu", "-Su", "-Syy", "-Sw", "--sync"]],
+    decision = "forbidden",
+    justification = "Never install packages. Tell the user the package and the exact command.",
+    match = ["pacman -S ripgrep", "pacman -Syu"],
+    not_match = ["pacman -Q ripgrep"],
+)
+
+prefix_rule(
+    pattern = ["paru"],
+    decision = "forbidden",
+    justification = "Never install packages. Tell the user the package and the exact command.",
+    match = ["paru -S foo"],
+)
+
+prefix_rule(
+    pattern = ["git", "push"],
+    decision = "forbidden",
+    justification = "git push is blocked. Ask the user to push.",
+    match = ["git push origin master"],
+    not_match = ["git status"],
+)

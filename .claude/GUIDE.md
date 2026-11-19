@@ -42,6 +42,8 @@ permission rules are enforced by the harness. If it must happen, use a hook.
 | `.codex/agents/web-researcher.toml`   | file link in real dir      | Same for Codex (`gpt-6.1-terra`)                   |
 | `.codex/skills/organize-commits/`     | file link in real dir      | Codex-only commit skill                            |
 | `.claude/projects/-home-luay-dotfiles/memory/` | folder link       | Claude's auto memory for this repo only            |
+| `.codex/hooks.json`                   | `~/.codex/hooks.json`      | Codex hooks: caveman wrapper + guard-bash (codex)  |
+| `.codex/rules/`                       | `~/.codex/rules` (folder)  | Codex command rules (`base.rules`)                 |
 
 Not tracked on purpose: `~/.claude.json` (state + account data),
 `~/.claude/.credentials.json`, `history.jsonl`, `projects/`, `sessions/`,
@@ -216,9 +218,28 @@ CLAUDE.md is what I write; memory is what Claude writes.
   background summaries of past chats into `~/.codex/memories/`, one store
   for all projects, uses rate limit. Don't hand-edit; use `/memories`.
 
+## Codex equivalents
+
+| Claude item   | Codex                                                                 |
+| ------------- | --------------------------------------------------------------------- |
+| Instructions  | `~/.codex/AGENTS.md` links to the same AGENTS.md                      |
+| Settings      | `~/.codex/config.toml`, untracked: it also holds project trust and hook trust hashes, and Codex rewrites it. Set by hand: `[analytics] enabled = false` |
+| Permissions   | Sandbox + approvals instead of allow/ask lists: `sandbox_mode` (`read-only`, `workspace-write`, `danger-full-access`), `approval_policy` (`on-request`, `never`). Command rules in `~/.codex/rules/*.rules`: `prefix_rule(pattern=[...], decision="allow"/"prompt"/"forbidden")`, token prefixes only, strictest match wins. Approving "always" in the TUI writes `default.rules` there. No file-read rules: secret files rely on AGENTS.md |
+| Hooks         | `~/.codex/hooks.json`, same shape as Claude's. PreToolUse can only deny (exit 2 or deny JSON), not ask; errors fail open. New or changed hooks are skipped until trusted with `/hooks`. Hosted tools (web search) bypass hooks |
+| Attribution   | No local switch (OpenAI account setting). guard-bash blocks commits with AI trailers |
+| Skills        | `~/.codex/skills/`, `~/.agents/skills/`                               |
+| Subagents     | `~/.codex/agents/*.toml`; can't set sandbox per agent                 |
+| MCP           | `[mcp_servers.<name>]` in config.toml                                 |
+| Plugins       | `codex plugin`, `[plugins."name@marketplace"]` in config.toml          |
+| Memory        | Off. `[features] memories = true` to try                              |
+
 ## Per-machine setup reminders
 
 - Caveman telemetry: run `caveman telemetry off` on each machine
   (`~/.caveman` is not tracked).
 - Create `~/.claude/agents` and `~/.codex/agents` as real folders before
   `stow .`, so only the tracked agents get linked.
+- Codex: add `[analytics] enabled = false` to `~/.codex/config.toml`, then
+  run `/hooks` in Codex and trust the hooks from `hooks.json`.
+- Re-running the caveman installer may rewrite `~/.codex/hooks.json`
+  (through the link): check `git diff` afterwards.

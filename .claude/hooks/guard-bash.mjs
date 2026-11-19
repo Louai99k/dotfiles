@@ -4,10 +4,16 @@
 //   inside bash -c / eval / $(...) / backticks): blocked (exit 2).
 // - sed scripts using the w, W or e commands, or the w/e flags of s///: ask.
 // - sed -f (script read from a file, can't be inspected): ask.
+// - git commit carrying an AI attribution trailer (Co-authored-by: Codex,
+//   Generated with Claude, ...): blocked. Codex has no local switch for it.
+//
+// Usage: node guard-bash.mjs [claude|codex]. Codex hooks can't ask, so with
+// "codex" every ask becomes a block that tells the agent to ask the user.
 //
 // Permission rules only support * wildcards, so these checks live here.
 // Known gaps: git aliases that expand to push (git p), commands fed to a
-// shell through a heredoc or a script file.
+// shell through a heredoc or a script file, commit messages read from a
+// file (git commit -F).
 
 import { readFileSync } from "node:fs";
 import { basename } from "node:path";
@@ -51,6 +57,10 @@ const GIT_VALUE_OPTS = new Set([
   "--super-prefix",
 ]);
 const ASSIGNMENT = /^[A-Za-z_][A-Za-z0-9_]*=/;
+const HARNESS = process.argv[2] ?? "claude";
+const GIT_COMMIT = /\bgit\b[\s\S]*\bcommit\b/;
+const AI_TRAILER =
+  /\b(co-authored-by|assisted-by|generated-by|co-developed-by):[^\n]*\b(codex|claude|openai|anthropic|chatgpt)\b|\bgenerated with \W*(codex|claude)\b/i;
 
 class Decision extends Error {
   constructor(kind, reason) {
@@ -130,7 +140,7 @@ function checkGit(args) {
     else if (args[i].startsWith("-")) continue;
     else {
       if (args[i] === "push")
-        deny("git push is blocked for Claude. Ask the user to push.");
+        deny("git push is blocked. Ask the user to push.");
       return;
     }
   }
@@ -230,12 +240,23 @@ function check(text, depth = 0) {
   }
 }
 
+// Quote one argv element for the shell, so an argv array becomes one string.
+const shellQuote = (a) =>
+  /^[\w@%+=:,./-]+$/.test(a) ? a : `'${a.replace(/'/g, "'\\''")}'`;
+
 try {
   const input = JSON.parse(readFileSync(0, "utf8"));
-  const command = input?.tool_input?.command;
-  if (typeof command === "string") check(command);
+  let command = input?.tool_input?.command;
+  if (Array.isArray(command)) command = command.map(String).map(shellQuote).join(" ");
+  if (typeof command === "string") {
+    if (GIT_COMMIT.test(command) && AI_TRAILER.test(command))
+      deny("commit message has an AI attribution trailer. Remove it: all work is authored by the user.");
+    check(command);
+  }
   process.exit(0);
 } catch (error) {
+  if (error instanceof Decision && error.kind === "ask" && HARNESS === "codex")
+    error = new Decision("deny", `${error.message} Codex hooks can't ask: ask the user to run this command.`);
   if (error instanceof Decision && error.kind === "ask") {
     process.stdout.write(
       JSON.stringify({
