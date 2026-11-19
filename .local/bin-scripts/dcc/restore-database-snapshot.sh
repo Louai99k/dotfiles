@@ -93,7 +93,7 @@ SQL
 sed "s/__DCC_RESTORE_DATABASE__/$STAGE/g" "$SNAPSHOT/create.sql" | psql_admin
 MADE_STAGE=1
 "${DOCKER[@]}" exec -i --env "PGDATABASE=$STAGE" --env PGHOST=/var/run/postgresql --env PGPORT=5432 --env "PGAPPNAME=$APP" "$CONTAINER" \
-  pg_restore --username="$DB_USER" --no-password --exit-on-error --single-transaction < "$SNAPSHOT/database.dump"
+  pg_restore --username="$DB_USER" --no-password --exit-on-error --single-transaction --dbname="$STAGE" < "$SNAPSHOT/database.dump"
 sed "s/__DCC_RESTORE_DATABASE__/$STAGE/g" "$SNAPSHOT/properties.sql" | psql_admin --single-transaction
 if [[ -n $ORIGINAL_ALLOW ]]; then
   BLOCKED_TARGET=1
