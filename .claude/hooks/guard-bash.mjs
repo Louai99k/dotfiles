@@ -8,7 +8,8 @@
 //   Generated with Claude, ...): blocked. Codex has no local switch for it.
 //
 // Usage: node guard-bash.mjs [claude|codex]. Codex hooks can't ask, so with
-// "codex" every ask becomes a block that tells the agent to ask the user.
+// "codex" every ask becomes an allow: Codex's sandbox still asks before
+// writes outside the workspace or network access.
 //
 // Permission rules only support * wildcards, so these checks live here.
 // Known gaps: git aliases that expand to push (git p), commands fed to a
@@ -147,10 +148,12 @@ function checkGit(args) {
 }
 
 // Does a sed script use w/W/e, or s/// with the w or e flag?
+// GNU sed needs no space before the filename (w/tmp/x), so any w, W or e in
+// command position counts.
 function sedScriptWrites(script) {
   const addr = String.raw`(?:\d+(?:~\d+)?|\$|/(?:\\.|[^/\n])*/[IM]*)`;
   const command = new RegExp(
-    String.raw`(?:^|[;\n{}])\s*(?:${addr}(?:\s*,\s*${addr})?)?\s*!?\s*[wWe](?:\s|;|$)`,
+    String.raw`(?:^|[;\n{}])\s*(?:${addr}(?:\s*,\s*${addr})?)?\s*!?\s*[wWe]`,
   );
   if (command.test(script)) return true;
   const subst = /s([^\w\s\\])(?:\\.|(?!\1).)*\1(?:\\.|(?!\1).)*\1([^;\n}]*)/g;
@@ -256,7 +259,7 @@ try {
   process.exit(0);
 } catch (error) {
   if (error instanceof Decision && error.kind === "ask" && HARNESS === "codex")
-    error = new Decision("deny", `${error.message} Codex hooks can't ask: ask the user to run this command.`);
+    process.exit(0);
   if (error instanceof Decision && error.kind === "ask") {
     process.stdout.write(
       JSON.stringify({

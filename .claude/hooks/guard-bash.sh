@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # PreToolUse hook for Bash: runs guard-bash.mjs with node.
-# Usage: guard-bash.sh [claude|codex] (default claude; Codex hooks can't ask).
+# Usage: guard-bash.sh [claude|codex] (default claude; with codex, asks become allows).
 # Node: nvm's default version, else the system node. Node is required:
 # no node, or any result other than exit 0, blocks (exit 2), because
 # Claude Code only blocks on exit 2.
