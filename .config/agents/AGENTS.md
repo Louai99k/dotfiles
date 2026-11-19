@@ -13,6 +13,13 @@ Shared by Claude Code (imported from `~/.claude/CLAUDE.md`) and Codex (`~/.codex
 - Desktop: Hyprland (Lua config) on Wayland, `waybar`, `wofi`, terminal `kitty`.
 - Tools: `nvim`, `tmux`, `yazi`, `rg`, `fd`, `fzf`, `zoxide`, `gitui`, `stow`, `docker`.
 
+## Ownership
+
+- I own my code and every engineering decision. You are a tool that saves me time, not a decision maker.
+- Execute the decisions I made. When a task needs a decision I did not make (architecture, design, data model, API shape, naming that matters, libraries, trade-offs), stop and ask. Give the options and your recommendation, then wait for my choice.
+- Ask before any action that is sensitive for me, even when the permission mode would let it run: commits and other git state changes, deleting files I did not name, database writes or migrations, Docker or service changes, edits outside the current project, dependency changes, and anything sent to an external service.
+- Routine work inside a decision I already made needs no confirmation: reading files, searching, and the code edits I asked for.
+
 ## Scope
 
 - Do only what the request needs. No drive-by fixes, refactors or cleanups.
