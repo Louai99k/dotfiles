@@ -42,6 +42,12 @@
       "Bash(sudo *)",
       "Bash(pacman -S*)",
       "Bash(paru *)",
+      "Bash(doas *)",
+      "Bash(npm * -g*)",
+      "Bash(npm *--global*)",
+      "Bash(pip install *)",
+      "Bash(pipx install *)",
+      "Bash(cargo install *)",
       "Bash(git push *)"
     ],
     "ask": [
@@ -74,7 +80,7 @@
       "Read(~/.docker/config.json)",
       "Read(~/.npmrc)"
     ],
-    "defaultMode": "default"
+    "defaultMode": "auto"
   },
   "model": "opus",
   "hooks": {
