@@ -44,11 +44,12 @@ permission rules are enforced by the harness. If it must happen, use a hook.
 | `.claude/projects/-home-luay-dotfiles/memory/` | folder link       | Claude's auto memory for this repo only            |
 | `.codex/hooks.json`                   | `~/.codex/hooks.json`      | Codex hooks: caveman wrapper + guard-bash (codex)  |
 | `.codex/rules/`                       | `~/.codex/rules` (folder)  | Codex command rules (`base.rules`)                 |
-| `.codex/config.toml`                  | `~/.codex/config.toml`     | Codex settings, plus project/hook trust state      |
 
 Not tracked on purpose: `~/.claude.json` (state + account data),
 `~/.claude/.credentials.json`, `history.jsonl`, `projects/`, `sessions/`,
-`plugins/` cache, `~/.codex/auth.json` and Codex's databases.
+`plugins/` cache, `~/.codex/auth.json`, Codex's databases, and
+`~/.codex/config.toml` (git-ignored: Codex writes project trust and hook
+hashes into it).
 
 Stow note: a target folder that does not exist yet becomes one folder link;
 one that exists gets one link per file. To keep untracked local files next to
@@ -227,7 +228,7 @@ CLAUDE.md is what I write; memory is what Claude writes.
 | Claude item   | Codex                                                                 |
 | ------------- | --------------------------------------------------------------------- |
 | Instructions  | `~/.codex/AGENTS.md` links to the same AGENTS.md                      |
-| Settings      | `~/.codex/config.toml`, tracked. Codex also writes project trust and hook trust hashes into it, so expect diffs; check it is still a link after Codex saves. `[analytics] enabled = false` |
+| Settings      | `~/.codex/config.toml`, not tracked: Codex writes project trust and hook trust hashes into it. Set by hand on each machine: `[analytics] enabled = false` |
 | Permissions   | Sandbox + approvals instead of allow/ask lists: `sandbox_mode` (`read-only`, `workspace-write`, `danger-full-access`), `approval_policy` (`on-request`, `never`). Command rules in `~/.codex/rules/*.rules`: `prefix_rule(pattern=[...], decision="allow"/"prompt"/"forbidden")`, token prefixes only, strictest match wins. Approving "always" in the TUI writes `default.rules` there. No file-read rules: secret files rely on AGENTS.md |
 | Hooks         | `~/.codex/hooks.json`, same shape as Claude's. PreToolUse can only deny (exit 2 or deny JSON), not ask; errors fail open. guard-bash's asks (sed e) become allows in Codex; the sandbox asks for writes outside the workspace. New or changed hooks are skipped until trusted with `/hooks`. Hosted tools (web search) bypass hooks |
 | Attribution   | No local switch (OpenAI account setting). guard-bash blocks commits with AI trailers |
@@ -243,7 +244,7 @@ CLAUDE.md is what I write; memory is what Claude writes.
   (`~/.caveman` is not tracked).
 - Create `~/.claude/agents` and `~/.codex/agents` as real folders before
   `stow .`, so only the tracked agents get linked.
-- Codex: if `/hooks` lists hooks as untrusted (other paths or changed
-  hooks), trust them there.
+- Codex: add `[analytics] enabled = false` to `~/.codex/config.toml`, then
+  run `/hooks` in Codex and trust the hooks from `hooks.json`.
 - Re-running the caveman installer may rewrite `~/.codex/hooks.json`
   (through the link): check `git diff` afterwards.
