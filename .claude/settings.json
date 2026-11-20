@@ -51,10 +51,8 @@
       "Bash(git push *)"
     ],
     "ask": [
-      "Bash(sed *-i*)",
       "Bash(awk *system*)",
       "Bash(awk *getline*)",
-      "Bash(awk *>*)",
       "Bash(awk *|*)",
       "Bash(rg *--pre*)",
       "Bash(fd * -x *)",

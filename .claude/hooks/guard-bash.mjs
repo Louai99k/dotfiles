@@ -2,7 +2,8 @@
 //
 // - git push in any form (git -C dir push, git -c k=v push, /usr/bin/git push,
 //   inside bash -c / eval / $(...) / backticks): blocked (exit 2).
-// - sed scripts using the w, W or e commands, or the w/e flags of s///: ask.
+// - sed scripts using the e command or the e flag of s/// (runs a shell
+//   command): ask. Writing files (-i, w, W) is allowed like any edit.
 // - sed -f (script read from a file, can't be inspected): ask.
 // - git commit carrying an AI attribution trailer (Co-authored-by: Codex,
 //   Generated with Claude, ...): blocked. Codex has no local switch for it.
@@ -147,18 +148,18 @@ function checkGit(args) {
   }
 }
 
-// Does a sed script use w/W/e, or s/// with the w or e flag?
-// GNU sed needs no space before the filename (w/tmp/x), so any w, W or e in
-// command position counts.
-function sedScriptWrites(script) {
+// Does a sed script run a shell command: the e command, or s/// with the e
+// flag? GNU sed needs no space after e (edate), so any e in command position
+// counts.
+function sedScriptRuns(script) {
   const addr = String.raw`(?:\d+(?:~\d+)?|\$|/(?:\\.|[^/\n])*/[IM]*)`;
   const command = new RegExp(
-    String.raw`(?:^|[;\n{}])\s*(?:${addr}(?:\s*,\s*${addr})?)?\s*!?\s*[wWe]`,
+    String.raw`(?:^|[;\n{}])\s*(?:${addr}(?:\s*,\s*${addr})?)?\s*!?\s*e`,
   );
   if (command.test(script)) return true;
   const subst = /s([^\w\s\\])(?:\\.|(?!\1).)*\1(?:\\.|(?!\1).)*\1([^;\n}]*)/g;
   for (const m of script.matchAll(subst)) {
-    if (/^[gpIiMm0-9]*[we]/.test(m[2])) return true;
+    if (/^[gpIiMm0-9]*e/.test(m[2])) return true;
   }
   return false;
 }
@@ -181,8 +182,8 @@ function checkSed(args) {
     else if (a.startsWith("-")) continue;
     else if (scripts.length === 0) scripts.push(a);
   }
-  if (scripts.some(sedScriptWrites))
-    ask("sed script uses w/W/e (writes a file or runs a command).");
+  if (scripts.some(sedScriptRuns))
+    ask("sed script uses e (runs a shell command).");
 }
 
 function runSimple(argv, depth) {

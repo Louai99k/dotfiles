@@ -74,7 +74,10 @@ tracked ones (like `~/.claude/agents`), create the real folder first, then stow.
 
 ## 3. Permissions
 
-- Mode now: Manual (`defaultMode: "default"`). Add allow rules over time.
+- Mode now: auto (`defaultMode: "auto"`). Edits are allowed, including
+  `sed -i` / `sed w` and `awk >`. Still asked: sed `e`, awk `system`,
+  `getline` and `|` (they run commands, and `Bash(sed *)` / `Bash(awk *)`
+  allow rules would otherwise skip auto mode's check).
 - Order: deny, then ask, then allow. First match wins in that order.
 - Syntax: `Bash(git status *)`, `Read(~/**)`, `Read(//abs/path/**)`,
   `mcp__server__tool`, `Agent(Explore)`. Only `*` wildcards, no regex.
@@ -226,7 +229,7 @@ CLAUDE.md is what I write; memory is what Claude writes.
 | Instructions  | `~/.codex/AGENTS.md` links to the same AGENTS.md                      |
 | Settings      | `~/.codex/config.toml`, tracked. Codex also writes project trust and hook trust hashes into it, so expect diffs; check it is still a link after Codex saves. `[analytics] enabled = false` |
 | Permissions   | Sandbox + approvals instead of allow/ask lists: `sandbox_mode` (`read-only`, `workspace-write`, `danger-full-access`), `approval_policy` (`on-request`, `never`). Command rules in `~/.codex/rules/*.rules`: `prefix_rule(pattern=[...], decision="allow"/"prompt"/"forbidden")`, token prefixes only, strictest match wins. Approving "always" in the TUI writes `default.rules` there. No file-read rules: secret files rely on AGENTS.md |
-| Hooks         | `~/.codex/hooks.json`, same shape as Claude's. PreToolUse can only deny (exit 2 or deny JSON), not ask; errors fail open. guard-bash's asks (sed w/e) become allows in Codex; the sandbox asks for writes outside the workspace. New or changed hooks are skipped until trusted with `/hooks`. Hosted tools (web search) bypass hooks |
+| Hooks         | `~/.codex/hooks.json`, same shape as Claude's. PreToolUse can only deny (exit 2 or deny JSON), not ask; errors fail open. guard-bash's asks (sed e) become allows in Codex; the sandbox asks for writes outside the workspace. New or changed hooks are skipped until trusted with `/hooks`. Hosted tools (web search) bypass hooks |
 | Attribution   | No local switch (OpenAI account setting). guard-bash blocks commits with AI trailers |
 | Skills        | `~/.codex/skills/`, `~/.agents/skills/`                               |
 | Subagents     | `~/.codex/agents/*.toml`; can't set sandbox per agent                 |
