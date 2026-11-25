@@ -239,11 +239,11 @@
     }
   },
   "autoUpdatesChannel": "stable",
+  "tui": "fullscreen",
   "voice": {
     "enabled": true,
     "mode": "hold"
   },
   "theme": "dark-ansi",
-  "preferredNotifChannel": "auto",
-  "tui": "fullscreen"
+  "preferredNotifChannel": "auto"
 }
