@@ -69,3 +69,7 @@ EOF
 5. sqlitebrowser (the only Qt5 app): `.local/share/applications/sqlitebrowser.desktop` runs it with `QT_QPA_PLATFORMTHEME=qt5ct`.
 
 6. Don't use nwg-look; it overwrites these files.
+
+### Claude skills
+
+`.claude/skills/` vendors a subset of [Matt Pocock's skills](https://github.com/mattpocock/skills) (the ones I use, plus the skills they call). To update them, run `scripts/general/update-matt-skills.sh` (newest) or pass a commit, review the diff, then commit. To add or remove a skill, edit `SKILLS` in that script. Each repo still runs `/setup-matt-pocock-skills` once.
