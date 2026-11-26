@@ -5,13 +5,16 @@ Shared by Claude Code (imported from `~/.claude/CLAUDE.md`) and Codex (`~/.codex
 ## Precedence
 
 - If a repo or project instruction conflicts with this file, the project instruction wins.
+- Skill steps never override the Verification, Git and Reports rules here.
+- Invoking `/implement` is my explicit ask to run the typecheck and test commands it names and to commit the work at the end.
 
 ## Environment
 
-- Arch Linux. Packages: `pacman`, AUR via `paru`.
-- Shell: `zsh` with Oh My Zsh.
-- Desktop: Hyprland (Lua config) on Wayland, `waybar`, `wofi`, terminal `kitty`.
-- Tools: `nvim`, `tmux`, `yazi`, `rg`, `fd`, `fzf`, `zoxide`, `gitui`, `stow`, `docker`.
+I use two machines. Check which one you are on (`/etc/os-release`) before relying on these details.
+
+- **Laptop:** Arch Linux. Packages: `pacman`, AUR via `paru`. Desktop: Hyprland (Lua config) on Wayland, `waybar`, `wofi`, terminal `kitty`.
+- **Home server:** Ubuntu Server LTS, headless, rebuilt every few months from `~/homeserver`. Packages: `apt`. Any change to this server must be captured in `~/homeserver` (see its `CLAUDE.md`).
+- Both: shell `zsh` with Oh My Zsh. Tools: `nvim`, `tmux`, `rg`, `fd` (`fdfind` on the server), `fzf`, `zoxide`, `gitui`, `stow`, `git`, `docker`; `yazi` on the laptop only.
 
 ## Ownership
 
@@ -37,7 +40,7 @@ Shared by Claude Code (imported from `~/.claude/CLAUDE.md`) and Codex (`~/.codex
 
 ## Installing software
 
-- Never install packages (`pacman`, `paru`, `npm -g`, `pip`, `cargo`, ...) or run `sudo` yourself.
+- Never install packages (`pacman`, `paru`, `apt`, `snap`, `npm -g`, `pip`, `cargo`, ...) or run `sudo` yourself.
 - Stop and tell me what is needed, with the suggested install method and exact command, so I can run it or give different instructions.
 
 ## Verification
@@ -56,6 +59,13 @@ Shared by Claude Code (imported from `~/.claude/CLAUDE.md`) and Codex (`~/.codex
 
 - Do not read secret files (`.env` files, credentials, tokens, API keys, private keys) as a first approach. When reading one is truly necessary, say why and ask me first.
 - Never print or commit secrets. Before committing, check the staged changes for secrets.
+
+## Reports
+
+- End every piece of work with a short numbered list of only what I should know: decisions I didn't make, behavior changes, gaps, risks, and things I must do.
+- One plain-language line per item. No internals or file paths unless I need them to act.
+- When a point is hard to picture, explain it with a short concrete example (what I would see or do).
+- Skills (including downloaded ones) and output modes such as caveman never override this format.
 
 ## Communication
 
