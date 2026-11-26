@@ -3,7 +3,7 @@
 
 ## Installing
 
-1. Create `.config`, `.icons`, `.local/share` and `.local/share/applications` folders at `/home/user`. Stow links a whole folder when it doesn't exist yet, and apps must not write their data into this repo
+1. Create `.config`, `.icons`, `.local/share`, `.local/share/applications` and `.claude/skills` folders at `/home/user` (`mkdir -p ~/.claude/skills`; other tools install their own skills there). Stow links a whole folder when it doesn't exist yet, and apps must not write their data into this repo
 
 2. Run `pacman -S git neovim wl-clipboard fzf zioxide zsh gcc gitui stow tmux make unzip ripgrep docker docker-compose docker-buildx yazi openssh`
 
