@@ -1,31 +1,29 @@
 #!/usr/bin/env bash
 # --------------------------------------------------
-# Vendors a chosen subset of Matt Pocock's skills (github.com/mattpocock/skills)
-# into .claude/skills/, as user-level Claude Code skills.
+# Refreshes the shared copies of Matt Pocock's skills (github.com/mattpocock/skills)
+# in .agents/skills/ for Claude Code and Codex.
 #
 #   scripts/general/update-matt-skills.sh            # newest commit
 #   scripts/general/update-matt-skills.sh <ref>      # a specific commit/tag/branch
 #
-# Replaces only the skills listed below, then prints the git diff so you can
-# review the update before committing. The commit used is written to COMMIT below.
+# Replaces the skills listed below and prints the changed paths for review.
+# The commit used is written to COMMIT below.
 # --------------------------------------------------
 set -euo pipefail
 
 COMMIT="6f7f7831a625f040a8e06a0e7954826b87ce775a"
 
-# Skills I use, plus the skills they call through the Skill tool.
 SKILLS=(
-  # used directly
-  grill-with-docs wayfinder triage ask-matt to-spec to-tickets implement
-  retro teach handoff prototype research code-review
-  # dependencies
-  grilling domain-modeling tdd codebase-design writing-for-agents
-  setup-matt-pocock-skills
+  ask-matt code-review codebase-design diagnosing-bugs domain-modeling
+  grill-me grill-with-docs grilling handoff implement implement-spec
+  improve-codebase-architecture prototype research retro setup-matt-pocock-skills
+  tdd teach to-questionnaire to-spec to-tickets triage wait-what wayfinder wizard
+  writing-for-agents
 )
 
 REF="${1:-}"
 DOTFILES="$(cd "$(dirname "$0")/../.." && pwd)"
-DEST="$DOTFILES/.claude/skills"
+DEST="$DOTFILES/.agents/skills"
 
 tmp="$(mktemp -d)"
 trap 'rm -rf "$tmp"' EXIT
@@ -43,4 +41,4 @@ done
 
 sed -i "s/^COMMIT=\".*\"$/COMMIT=\"$new_commit\"/" "$0"
 echo "Vendored ${#SKILLS[@]} skills at $new_commit"
-git -C "$DOTFILES" status --short -- .claude/skills "$0"
+git -C "$DOTFILES" status --short -- .agents/skills "$0"

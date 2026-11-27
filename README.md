@@ -3,7 +3,7 @@
 
 ## Installing
 
-1. Create `.config`, `.icons`, `.local/share`, `.local/share/applications` and `.claude/skills` folders at `/home/user` (`mkdir -p ~/.claude/skills`; other tools install their own skills there). Stow links a whole folder when it doesn't exist yet, and apps must not write their data into this repo
+1. Create `~/.config`, `~/.icons`, `~/.local/share` and `~/.local/share/applications`. Before running Stow, also run `mkdir -p ~/.agents/skills ~/.claude/skills ~/.codex/skills` so each tool can store its local state and other skills alongside the managed links.
 
 2. Run `pacman -S git neovim wl-clipboard fzf zioxide zsh gcc gitui stow tmux make unzip ripgrep docker docker-compose docker-buildx yazi openssh`
 
@@ -70,6 +70,10 @@ EOF
 
 6. Don't use nwg-look; it overwrites these files.
 
-### Claude skills
+### Claude Code and Codex skills
 
-`.claude/skills/` vendors a subset of [Matt Pocock's skills](https://github.com/mattpocock/skills) (the ones I use, plus the skills they call). To update them, run `scripts/general/update-matt-skills.sh` (newest) or pass a commit, review the diff, then commit. To add or remove a skill, edit `SKILLS` in that script. Each repo still runs `/setup-matt-pocock-skills` once.
+`.agents/skills/` holds the 26 vendored [Matt Pocock skills](https://github.com/mattpocock/skills). Each app's skills directory links to those shared copies.
+
+If the skills are already installed separately, move the matching directories in `~/.agents/skills` and any matching entries in `~/.claude/skills` and `~/.codex/skills` that point outside dotfiles to a backup location before running `stow .`. Leave other skills and installer state in place.
+
+To refresh the shared copies, run `scripts/general/update-matt-skills.sh` (newest) or pass a commit, then review the diff. To add or remove a skill, update the shared directory, both app links, and `SKILLS` in the script. Each repo still runs `/setup-matt-pocock-skills` once.
